@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Autograder App (Designed by Weiheng Su)</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+   
+ 
+ 
+</head>
+ 
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h3 class="text-muted" style="text-align: center;">Autograder App</h3>
+        </div>
+            <form  class="form-signup" action="/gradeUpload" method="POST" enctype="multipart/form-data">
+                 <!-- input type="file" required class="form-control"  value="{{ request.form.playerS_name }}"> <br-->
+                 <input type="file" required class="form-control" class="btn btn-primary" name="file"> <br>
+                 <input class="btn btn-lg btn-primary" type="submit" value="Upload Your File" id="btnSignin">
+		   </form><br><br><br>
+        <div>
+            <h4> Result: </h4>
+          
+        </div>
+  
+	</div>  
+  </body>
+</html>
