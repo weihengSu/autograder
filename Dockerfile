@@ -12,6 +12,7 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 ADD flask-app /opt/flask-app
 WORKDIR /opt/flask-app
 
+
 # fetch app specific deps
 RUN npm install
 RUN npm run build
