@@ -9,8 +9,11 @@ RUN apt-get -yqq install nodejs npm
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # copy our application code
-ADD flask-app /opt/flask-app
-WORKDIR /opt/flask-app
+#ADD flask-app /opt/flask-app
+#WORKDIR /opt/flask-app
+
+ADD autograder /opt/autograder
+WORKDIR /opt/autograder
 
 
 # fetch app specific deps
