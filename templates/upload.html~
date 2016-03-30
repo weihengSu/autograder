@@ -33,7 +33,7 @@
       <form action="/viewResult" method="POST">
         <input type="submit" value="View result">
        </form>
-      <h4>Result</h4><br>
+      <h4>Result</h4>
        {% if data %}
             {{data}}
        {% endif %}

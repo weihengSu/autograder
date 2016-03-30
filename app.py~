@@ -74,7 +74,8 @@ def viewResult():
 	with open('uploads/walk.cc','r') as fs:
 		data += fs.read()
 		data += "\n"
-	return render_template('upload.html', data=data)
+        hello = "hi"
+	return render_template('upload.html', hello=hello)
 
 
 
