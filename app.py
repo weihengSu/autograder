@@ -64,16 +64,18 @@ def gradeUpload():
 def viewResult():
 	subprocess.call("rm -f ./a.out", shell=True)
 	retcode = subprocess.call("/usr/bin/g++ uploads/walk.cc", shell=True)
-	data = ""
+	data = {}
+	data[0] = ""
+	data[1] = ""
 	if retcode:
-		data = "failed to compile walk.cc"
+		data[0] += "failed to compile walk.cc\n"
 	subprocess.call("rm -f ./output", shell=True)
 	retcode = subprocess.call("./test.sh", shell=True)
-	data = "Score: " + str(retcode) + " out of 2 correct."
-	data += "*************Original submission*************\n"
+	data[0] += "Score: " + str(retcode) + " out of 2 correct."
+	data[1] += "*************Original submission*************\n"
 	with open('uploads/walk.cc','r') as fs:
-		data += fs.read()
-		data += "\n"
+		data[1] += fs.read()
+		data[1] += "\n"
 	return render_template('upload.html', data=data)
 
 

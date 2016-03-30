@@ -17,6 +17,7 @@
     <div class="container">
         <div class="header">
             <h3 class="text-muted" style="text-align: center;">Autograder App</h3>
+            <footer class="text-muted" style="text-align: right;">Made by Weiheng Su(ws2ta)</footer>
         </div>
             <form  class="form-signup" action="/gradeUpload" method="POST" enctype="multipart/form-data">
                  <!-- input type="file" required class="form-control"  value="{{ request.form.playerS_name }}"> <br-->
@@ -24,19 +25,21 @@
                  <input class="btn btn-lg btn-primary" type="submit" value="Upload Your File" id="btnSignin">
 		       </form><br><br><br>
         <div>
-           <!--table action="/viewResult" class="table table-striped">
-               <tr> Result : </tr>
-               <tr>  {{hello}} </tr>
-          </table-->
-          
-           <!--input type="button" value="testing" onclick="alert({{hello}})" -->
+       <br><br><br>
       <form action="/viewResult" method="POST">
-        <input type="submit" value="View result">
+        <input type="submit" value="View result" class="btn btn-lg btn-success">
        </form>
-      <h4>Result</h4><br>
+       <br>
+     
        {% if data %}
-            {{data}}
+           <h4>Result</h4><br>
+
+            {{data[0]}}<br><br><br>
+            {{data[1]}}
+
        {% endif %}
+
+    
       
           
         </div>
