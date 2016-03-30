@@ -4,7 +4,7 @@
 #Assignment 4
 
 import os
-
+import subprocess
 
 from flask import Flask, render_template,json, request, redirect, url_for, request, get_flashed_messages,send_from_directory
 
@@ -55,24 +55,26 @@ def viewUpload():
 def gradeUpload():
 	file = request.files['file']
 	if file and allowed_file(file.filename):
-		# Make the filename safe, remove unsupported chars
 		filename = secure_filename(file.filename)
-		# Move the file form the temporal folder to
-		# the upload folder we setup
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-		# Redirect the user to the uploaded_file route, which
-		# will basicaly show on the browser the uploaded file
-		#return redirect(url_for('uploaded_file', filename=filename))
 		return redirect(url_for('viewUpload'))
 
-# This route is expecting a parameter containing the name
-# of a file. Then it will locate that file on the upload
-# directory and show it on the browser, so if the user uploads
-# an image, that image is going to be show after the upload
-#@app.route('/uploads/<filename>')
-#def uploaded_file(filename):
-#	return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+@app.route('/viewResult')
+def viewResult():
+	subprocess.call("rm -f ./a.out", shell=True)
+	retcode = subprocess.call("/usr/bin/g++ uploads/walk.cc", shell=True)
+	data = ""
+	if retcode:
+		data = "failed to compile walk.cc"
+	subprocess.call("rm -f ./output", shell=True)
+	retcode = subprocess.call("./test.sh", shell=True)
+	data = "Score: " + str(retcode) + " out of 2 correct."
+	data += "*************Original submission*************\n"
+	with open('uploads/walk.cc','r') as fs:
+		data += fs.read()
+		data += "\n"
+	return render_template('upload.html', data=data)
 
 
 

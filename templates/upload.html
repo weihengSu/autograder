@@ -22,9 +22,14 @@
                  <!-- input type="file" required class="form-control"  value="{{ request.form.playerS_name }}"> <br-->
                  <input type="file" required class="form-control" class="btn btn-primary" name="file"> <br>
                  <input class="btn btn-lg btn-primary" type="submit" value="Upload Your File" id="btnSignin">
-		   </form><br><br><br>
+		       </form><br><br><br>
         <div>
-            <h4> Result: </h4>
+           <!--table action="/viewResult" class="table table-striped">
+               <tr> Result : </tr>
+               <tr>  {{data}} </tr>
+          </table -->
+
+           <input type="button" value="testing" onclick="alert({{data}})">
           
         </div>
   
